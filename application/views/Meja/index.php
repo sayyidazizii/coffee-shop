@@ -24,11 +24,12 @@
 
             <!-- Page content-->
             <div class="container-fluid">
+
                 <!-- alert -->
                 <?php $tambah = $this->session->flashdata('tambah'); ?>
                 <?php if (isset($tambah)) : ?>
                     <div class="alert alert-success mt-2">
-                        Berhasil Tambah User
+                        Berhasil Tambah Meja
                     </div>
                 <?php endif ?>
                 <?php $edit = $this->session->flashdata('edit'); ?>
@@ -44,28 +45,27 @@
                     </div>
                 <?php endif ?>
                 <!-- end alert -->
+
                 <div class="card shadow mt-5">
                     <div class="card-header">
-                        Data User
+                        Data Meja
                     </div>
                     <div class="container mt-3" style="width:100vw;">
                         <?php
                         if ($_SESSION['level'] == 1) {
                         ?>
-                            <a href="<?php echo base_url('User/tambahuser') ?>" class="btn btn-primary mb-3">Tambah User</a>
+                            <a href="<?php echo base_url('Meja/tambahmeja') ?>" class="btn btn-primary mb-3">Tambah Meja</a>
                         <?php
                         }
                         ?>
-
-
                         <table class="table table-bordered">
                             <tr class="text-center">
-                                <th>Id User</th>
-                                <th>Username</th>
-                                <th>Nama User</th>
-                                <th>Level</th>
+                                <th>Id Meja</th>
+                                <th>No Meja</th>
+                                <th>Kapasitas</th>
+                                <th>Status</th>
                                 <?php
-                                if ($_SESSION['level'] == 1) {
+                                if ($_SESSION['level'] == 2 or $_SESSION['level'] == 1) {
                                 ?>
                                     <th>Aksi</th>
                                 <?php
@@ -78,26 +78,23 @@
                                 $count = $count + 1;
                             ?>
                                 <tr class="text-center">
-                                    <td><?php echo $row->id_user ?></td>
-                                    <td><?php echo $row->username ?></td>
-                                    <td><?php echo $row->nama_user ?></td>
+                                    <td><?php echo $row->id_meja ?></td>
+                                    <td><?php echo $row->no_meja ?></td>
+                                    <td><?php echo $row->kapasitas ?></td>
                                     <td>
-                                        <?php if ($row->id_level == 1) { ?>
-                                            <p class="badge bg-primary text-light">Admin</p>
+                                        <?php if ($row->status_meja == 1) { ?>
+                                            <p class="badge bg-success text-light">kosong</p>
                                         <?php } ?>
-                                        <?php if ($row->id_level == 2) { ?>
-                                            <p class="badge bg-secondary text-light">Kasir</p>
-                                        <?php } ?>
-                                        <?php if ($row->id_level == 3) { ?>
-                                            <p class="badge bg-warning text-light">Manager</p>
+                                        <?php if ($row->status_meja == 0) { ?>
+                                            <p class="badge bg-danger text-light">terisi</p>
                                         <?php } ?>
                                     </td>
                                     <?php
-                                    if ($_SESSION['level'] == 1) {
+                                    if ($_SESSION['level'] == 2 or $_SESSION['level'] == 1) {
                                     ?>
                                         <td>
-                                            <a href="<?php echo base_url('User/edituser') ?>/<?php echo $row->id_user ?>" class="btn btn-warning">edit</a>
-                                            <a href="<?php echo base_url('User/hapus') ?>/<?php echo $row->id_user ?>" class="btn btn-danger">Hapus</a>
+                                            <a href="<?php echo base_url('Meja/editmeja') ?>/<?php echo $row->id_meja ?>" class="btn btn-warning">edit</a>
+                                            <a href="<?php echo base_url('Meja/hapus') ?>/<?php echo $row->id_meja ?>" class="btn btn-danger">Hapus</a>
                                         </td>
                                     <?php
                                     }

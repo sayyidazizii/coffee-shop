@@ -29,7 +29,7 @@
                  <?php $tambah = $this->session->flashdata('tambah'); ?>
                 <?php if (isset($tambah)) : ?>
                     <div class="alert alert-success mt-2">
-                        Berhasil Tambah Menu
+                        Berhasil Tambah data
                     </div>
                 <?php endif ?>
                 <?php $edit = $this->session->flashdata('edit'); ?>
@@ -48,24 +48,25 @@
                 
                 <div class="card shadow mt-5">
                     <div class="card-header">
-                        Data Menu
+                        Data Pesanan
                     </div>
                     <div class="container mt-3" style="width:100vw;">
                     <?php
-                    if ($_SESSION['level'] == 3) {
+                    if ( $_SESSION['level'] == 2 or $_SESSION['level'] == 1) {
                     ?>
-                        <a href="<?php echo base_url('Menu/tambahmenu') ?>" class="btn btn-primary mb-3">Tambah Menu</a>
+                        <a href="<?php echo base_url('Pesanan/tambahpesanan') ?>" class="btn btn-primary mb-3">Tambah Pesanan</a>
                     <?php
                     }
                     ?>
                     <table class="table table-bordered">
                         <tr class="text-center">
-                            <th>Id Menu</th>
-                            <th>Nama Menu</th>
-                            <th>Harga</th>
-                            <th>Status</th>
+                            <th>ID Pesanan</th>
+                            <th>Customer</th>
+                            <th>ID meja</th>
+                            <th>Tanggal</th>
+                            <th>ID User</th>
                             <?php
-                            if ($_SESSION['level'] == 3) {
+                            if ( $_SESSION['level'] == 2 or $_SESSION['level'] == 1) {
                             ?>
                                 <th>Aksi</th>
                             <?php
@@ -78,23 +79,17 @@
                             $count = $count + 1;
                         ?>
                             <tr class="text-center">
-                                <td><?php echo $row->id_masakan ?></td>
-                                <td><?php echo $row->nama_masakan ?></td>
-                                <td><?php echo $row->harga ?></td>
-                                <td>
-                                    <?php if ($row->status_masakan == 1) { ?>
-                                        <p class="badge bg-success text-light">Active</p>
-                                    <?php } ?>
-                                    <?php if ($row->status_masakan == 0) { ?>
-                                        <p class="badge bg-danger text-light">Inactive</p>
-                                    <?php } ?>
-                                </td>
+                                <td><?php echo $row->id_pesanan ?></td>
+                                <td><?php echo $row->customer ?></td>
+                                <td><?php echo $row->id_meja ?></td>
+                                <td><?php echo $row->tanggal ?> </td>
+                                <td><?php echo $row->id_user ?> </td>
                                 <?php
-                                if ( $_SESSION['level'] == 3) {
+                                if ( $_SESSION['level'] == 2 or $_SESSION['level'] == 1) {
                                 ?>
                                     <td>
-                                        <a href="<?php echo base_url('Menu/editmenu') ?>/<?php echo $row->id_masakan ?>" class="btn btn-warning">edit</a>
-                                        <a href="<?php echo base_url('Menu/hapus') ?>/<?php echo $row->id_masakan ?>" class="btn btn-danger">Hapus</a>
+                                        <a href="<?php echo base_url('Pesanan/editpesanan') ?>/<?php echo $row->id_pesanan ?>" class="btn btn-warning">edit</a>
+                                        <a href="<?php echo base_url('Pesanan/hapus') ?>/<?php echo $row->id_pesanan ?>" class="btn btn-danger">Hapus</a>
                                     </td>
                                 <?php
                                 }

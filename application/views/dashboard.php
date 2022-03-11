@@ -46,22 +46,22 @@
                                 <div class="card-body">
                                     <p class="fw-bold">Pesanan
                                     <div class="text-center">
-                                        1
+                                        <?php echo $pesanan?>
                                     </div>
                                     </p>
-                                    <a href="" class="btn btn-primary">View</a>
+                                    <a href="<?php echo base_url('Pesanan')?>" class="btn btn-primary">View</a>
                                 </div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="card shadow">
                                 <div class="card-body">
-                                    <p class="fw-bold">Meja
+                                    <p class="fw-bold">Meja Kosong
                                     <div class="text-center">
-                                        1
+                                    <?php echo $meja?>
                                     </div>
                                     </p>
-                                    <a href="" class="btn btn-primary">View</a>
+                                    <a href="<?php echo base_url('Meja')?>" class="btn btn-primary">View</a>
                                 </div>
                             </div>
                         </div>

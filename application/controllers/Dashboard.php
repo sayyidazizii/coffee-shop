@@ -12,12 +12,19 @@ class Dashboard extends CI_Controller{
 			}
             $this->load->model('M_user');
             $this->load->model('M_menu');
+            $this->load->model('M_meja');
             
     }
     public function index()
     {
         $data['user'] = $this->db->get('user')->num_rows();
         $data['menu'] = $this->db->get('masakan')->num_rows();
+        $data['pesanan'] = $this->db->get('pesanan')->num_rows();
+
+        // dapatkan meja kosong
+        $this->db->where('status_meja', 1);
+        $data['meja'] = $this->db->get('meja')->num_rows();
+        
         $this->load->view('dashboard',$data);
     }
     public function profil()
