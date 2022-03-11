@@ -83,10 +83,10 @@
                                     <td><?php echo $row->kapasitas ?></td>
                                     <td>
                                         <?php if ($row->status_meja == 1) { ?>
-                                            <p class="badge bg-success text-light">kosong</p>
+                                            <p class="badge bg-success text-light">Ready</p>
                                         <?php } ?>
                                         <?php if ($row->status_meja == 0) { ?>
-                                            <p class="badge bg-danger text-light">terisi</p>
+                                            <p class="badge bg-danger text-light">NotReady</p>
                                         <?php } ?>
                                     </td>
                                     <?php
@@ -109,6 +109,7 @@
             </div>
         </div>
     </div>
+    <?php $this->load->view('Layout/footer')?>
     <script src="<?php echo base_url() ?>assets/bootstrap/js/bootstrap.min.js"></script>
 
 </body>

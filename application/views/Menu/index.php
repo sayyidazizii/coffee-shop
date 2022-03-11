@@ -52,7 +52,7 @@
                     </div>
                     <div class="container mt-3" style="width:100vw;">
                     <?php
-                    if ($_SESSION['level'] == 3) {
+                    if ($_SESSION['level'] == 3 or $_SESSION['level'] == 1) {
                     ?>
                         <a href="<?php echo base_url('Menu/tambahmenu') ?>" class="btn btn-primary mb-3">Tambah Menu</a>
                     <?php
@@ -65,7 +65,7 @@
                             <th>Harga</th>
                             <th>Status</th>
                             <?php
-                            if ($_SESSION['level'] == 3) {
+                            if ($_SESSION['level'] == 3 or $_SESSION['level'] == 1) {
                             ?>
                                 <th>Aksi</th>
                             <?php
@@ -90,7 +90,7 @@
                                     <?php } ?>
                                 </td>
                                 <?php
-                                if ( $_SESSION['level'] == 3) {
+                                if ( $_SESSION['level'] == 3 or $_SESSION['level'] == 1) {
                                 ?>
                                     <td>
                                         <a href="<?php echo base_url('Menu/editmenu') ?>/<?php echo $row->id_masakan ?>" class="btn btn-warning">edit</a>
@@ -109,6 +109,7 @@
             </div>
         </div>
     </div>
+    <?php $this->load->view('Layout/footer')?>
     <script src="<?php echo base_url() ?>assets/bootstrap/js/bootstrap.min.js"></script>
 
 </body>

@@ -17,7 +17,7 @@ class M_pesanan extends CI_Model
     }
     public function insert($pesanan)
     {
-        $this->db->insert($this->table, $meja);
+        $this->db->insert($this->table, $pesanan);
     }
     public function getbyid($id_pesanan)
     {
@@ -25,7 +25,7 @@ class M_pesanan extends CI_Model
         $query = $this->db->get('pesanan');
         return $query->row();
     }
-    public function editmeja($id,$data)
+    public function editpesanan($id,$data)
     {
         $this->db->where('id_pesanan', $id);
         $this->db->update('pesanan', $data);

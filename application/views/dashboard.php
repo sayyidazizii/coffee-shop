@@ -56,7 +56,7 @@
                         <div class="col">
                             <div class="card shadow">
                                 <div class="card-body">
-                                    <p class="fw-bold">Meja Kosong
+                                    <p class="fw-bold">Meja Ready
                                     <div class="text-center">
                                     <?php echo $meja?>
                                     </div>
@@ -82,6 +82,7 @@
             </div>
         </div>
     </div>
+    <?php $this->load->view('Layout/footer')?>
     <script src="<?php echo base_url() ?>assets/bootstrap/js/bootstrap.min.js"></script>
 
 </body>

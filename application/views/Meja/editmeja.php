@@ -37,8 +37,8 @@
                             <input class="form-control" type="text" name="kapasitas" value="<?php echo $meja->kapasitas?>" required>
                             <label class="form-label">Ubah Status ?</label>
                             <select class="form-select mb-3" name="status_meja">
-                                <option value="1">kosong</option>
-                                <option value="0">terisi</option>
+                                <option value="1">Ready</option>
+                                <option value="0">NotReady</option>
                             </select>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                             <a href="<?php echo base_url('Meja')?>" class="btn btn-secondary">Batal</a>
@@ -48,6 +48,7 @@
             </div>
         </div>
     </div>
+    <?php $this->load->view('Layout/footer')?>
     <script src="<?php echo base_url() ?>assets/bootstrap/js/bootstrap.min.js"></script>
 
 </body>

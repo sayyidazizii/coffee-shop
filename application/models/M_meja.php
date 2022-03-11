@@ -35,4 +35,12 @@ class M_meja extends CI_Model
         $this->db->where('id_meja', $id_meja);
         $this->db->delete($this->table);
     }
+
+    public function meja()
+    {
+        $this->db->where('status_meja', 1);
+        $query = $this->db->get('meja');
+        return $query->result();
+    }
+      
 }

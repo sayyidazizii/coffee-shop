@@ -18,16 +18,16 @@
                 <?php $pesan = $this->session->flashdata('pesan');?>
                 <?php if (isset($pesan)):?>
                     <div class="alert alert-danger">
-                        Login Gagal ,<strong> username Atau Password salah!!</strong>
+                        Login Gagal ,<strong> Username Atau Password salah!!</strong>
                     </div>
                 <?php endif?>
                 <div class="mb-3">
                     <label class="form-label">Username</label>
-                    <input type="text" name="username" class="form-control">
+                    <input type="text" name="username" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control">
+                    <input type="password" name="password" class="form-control" required>
                 </div>
                 <div class="row">
                     <div class="col-sm-6">

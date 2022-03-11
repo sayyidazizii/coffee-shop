@@ -12,74 +12,74 @@ class Pesanan extends CI_Controller
             redirect('Login');
         }
         $this->load->model('M_pesanan');
+        $this->load->model('M_meja');
+        $this->load->model('M_user');
     }
     public function index()
     {
-        $query = $this->M_pesanan->data();
-        $data  = array('data' => $query);
+        $data['data'] = $this->M_pesanan->data();
+        $data['meja'] = $this->M_meja->meja();
+        $data['user'] = $this->M_user->data();
         $this->load->view('Pesanan/index', $data);
         // var_dump($data);
     }
-    public function tambahmenu()
-    {
-         //pengecekan sesi
-         if ($this->session->userdata('level') != 3) {
-            redirect('Menu');
-        }
-        $this->load->view('Menu/tambahmenu');
-    }
     public function tambahdata()
     {
-        $nama_masakan = $this->input->post('nama_masakan');
-        $harga = $this->input->post('harga');
-        $status_masakan = $this->input->post('status_masakan');
+        $customer = $this->input->post('customer');
+        $id_meja = $this->input->post('id_meja');
+        $tanggal = $this->input->post('tanggal');
+        $id_user = $this->input->post('id_user');
 
         $Arrinsert = array(
-            'nama_masakan' => $nama_masakan,
-            'harga' => $harga,
-            'status_masakan' => $status_masakan
+            'customer' => $customer,
+            'id_meja' => $id_meja,
+            'tanggal' => $tanggal,
+            'id_user' => $id_user
         );
         $this->session->set_flashdata('tambah','berhasil');
         $this->M_pesanan->insert($Arrinsert);
-        redirect('Menu');
+        redirect('Pesanan');
     }
-    public function editmenu($id_masakan)
+    public function editpesanan($id_pesanan)
     {
          //pengecekan sesi
-         if ($this->session->userdata('level') != 3) {
-            redirect('Menu');
+         if ($this->session->userdata('level') == 3) {
+            redirect('Pesanan');
         }
-        $query = $this->M_pesanan->getbyid($id_masakan);
-        $data  = array('masakan' => $query);
-        $this->load->view('Menu/editmenu', $data);
+        $query = $this->M_pesanan->getbyid($id_pesanan);
+        $data  = array('pesanan' => $query);
+        $this->load->view('Pesanan/editpesanan', $data);
         // var_dump($data);
     }
     public function editdata()
     {
-        $id_masakan               = $this->input->post('id_masakan');
-        $nama_masakan             = $this->input->post('nama_masakan');
-        $harga     = $this->input->post('harga');
-        $status_masakan               = $this->input->post('status_masakan');
+        $id_pesanan  = $this->input->post('id_pesanan');
+        $customer = $this->input->post('customer');
+        $id_meja = $this->input->post('id_meja');
+        $tanggal = $this->input->post('tanggal');
+        $id_user = $this->input->post('id_user');
 
         $Arrupdate = array(
-            'id_masakan'            =>     $id_masakan,
-            'nama_masakan'          =>     $nama_masakan,
-            'harga'                 =>     $harga,
-            'status_masakan'        =>     $status_masakan,
+            'id_pesanan' => $id_pesanan,
+            'customer' => $customer,
+            'id_meja' => $id_meja,
+            'tanggal' => $tanggal,
+            'id_user' => $id_user
         );
         $this->session->set_flashdata('edit','berhasil');
-        $this->M_pesanan->editmenu($id_masakan, $Arrupdate);
-        Redirect('Menu');
+        $this->M_pesanan->editpesanan($id_pesanan, $Arrupdate);
+        Redirect('Pesanan');
         // var_dump($Arrupdate);
     }
     public function hapus($id)
     {
          //pengecekan sesi
-         if ($this->session->userdata('level') != 3) {
-            redirect('Menu');
+         if ($this->session->userdata('level') == 3) {
+            redirect('Pesanan');
         }
         $this->M_pesanan->hapus($id);
         $this->session->set_flashdata('hapus','berhasil');
-        redirect('Menu');
+        redirect('Pesanan');
     }
+
 }

@@ -23,7 +23,7 @@ class Menu extends CI_Controller
     public function tambahmenu()
     {
          //pengecekan sesi
-         if ($this->session->userdata('level') != 3) {
+         if ($this->session->userdata('level') == 2) {
             redirect('Menu');
         }
         $this->load->view('Menu/tambahmenu');
@@ -46,7 +46,7 @@ class Menu extends CI_Controller
     public function editmenu($id_masakan)
     {
          //pengecekan sesi
-         if ($this->session->userdata('level') != 3) {
+         if ($this->session->userdata('level') == 2) {
             redirect('Menu');
         }
         $query = $this->M_menu->getbyid($id_masakan);
@@ -75,7 +75,7 @@ class Menu extends CI_Controller
     public function hapus($id)
     {
          //pengecekan sesi
-         if ($this->session->userdata('level') != 3) {
+         if ($this->session->userdata('level') == 2) {
             redirect('Menu');
         }
         $this->M_menu->hapus($id);

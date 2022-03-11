@@ -51,6 +51,7 @@
             </div>
         </div>
     </div>
+    <?php $this->load->view('Layout/footer')?>
     <script src="<?php echo base_url() ?>assets/bootstrap/js/bootstrap.min.js"></script>
 
 </body>

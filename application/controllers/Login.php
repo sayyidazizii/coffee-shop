@@ -24,6 +24,8 @@ class Login extends CI_Controller{
             $data_user =array(
                 'username'=>$username,
                 'password'=>$password,
+                'id_user'=>$row->id_user,
+                'nama_user'=>$row->nama_user,
                 'level'=>$row->id_level,
                 'is_login'=>true
             );
