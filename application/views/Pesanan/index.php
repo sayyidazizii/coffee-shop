@@ -64,9 +64,10 @@
                             <tr class="text-center">
                                 <th>ID Pesanan</th>
                                 <th>Customer</th>
-                                <th>ID meja</th>
+                                <th>Meja</th>
                                 <th>Tanggal</th>
-                                <th>ID User</th>
+                                <th>User</th>
+                                <th>Status</th>
                                 <?php
                                 if ($_SESSION['level'] == 2 or $_SESSION['level'] == 1) {
                                 ?>
@@ -76,20 +77,28 @@
                                 ?>
                             </tr>
                             <?php
-                            $count = 0;
-                            foreach ($data as $row) {
-                                $count = $count + 1;
+                            $query = $this->db->query("SELECT * FROM pesanan INNER JOIN user ON pesanan.id_user = user.id_user");
+                            foreach ($query->result() as $row) {
+                                if($row->status_pesanan ==  1){
+                                  continue;
+                                }
                             ?>
                                 <tr class="text-center">
                                     <td><?php echo $row->id_pesanan ?></td>
                                     <td><?php echo $row->customer ?></td>
                                     <td><?php echo $row->id_meja ?></td>
                                     <td><?php echo $row->tanggal ?> </td>
-                                    <td><?php echo $row->id_user ?> </td>
+                                    <td><?php echo $row->username ?> </td>
+                                    <td>  <?php if ($row->status_pesanan == '0'){?>
+                                    <p class="text-light badge bg-danger">Belum di bayar</p>
+                                    <?php }?>
+
+                                    </td>
                                     <?php
                                     if ($_SESSION['level'] == 2 or $_SESSION['level'] == 1) {
                                     ?>
                                         <td>
+                                            <a href="<?php echo base_url('Pesanan/detailpesanan') ?>/<?php echo $row->id_pesanan ?>" class="btn btn-primary">Transaksi</a>
                                             <a href="<?php echo base_url('Pesanan/editpesanan') ?>/<?php echo $row->id_pesanan ?>" class="btn btn-warning">edit</a>
                                             <?php
                                             if ($_SESSION['level'] == 1) {
@@ -129,7 +138,7 @@
                 <form action="<?php echo base_url('Pesanan/tambahdata') ?>" method="POST">
                     <label class="form-label">Nama Customer</label>
                     <input class="form-control" type="text" name="customer" required>
-                    <label class="form-label">Id Meja</label>
+                    <label class="form-label">Meja</label>
                     <select class="form-select mb-3" name="id_meja">
                         <?php
                         foreach ($meja as $row) {
@@ -140,7 +149,8 @@
                         ?>
                     </select>
                     <label class="form-label">User</label>
-                    <input class="form-control" type="text" name="id_user" value="<?php echo $_SESSION['id_user'] ?>" readonly>
+                    <input class="form-control" type="text" value="<?php echo $_SESSION['nama_user'] ?>" readonly>
+                    <input class="form-control" type="text" name="id_user" value="<?php echo $_SESSION['id_user'] ?>" hidden>
                     <label class="form-label">Tanggal</label>
                     <input class="form-control" type="date" name="tanggal" required>
             </div>

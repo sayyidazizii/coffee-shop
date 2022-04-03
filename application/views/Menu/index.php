@@ -25,8 +25,8 @@
             <!-- Page content-->
             <div class="container-fluid">
 
-                 <!-- alert -->
-                 <?php $tambah = $this->session->flashdata('tambah'); ?>
+                <!-- alert -->
+                <?php $tambah = $this->session->flashdata('tambah'); ?>
                 <?php if (isset($tambah)) : ?>
                     <div class="alert alert-success mt-2">
                         Berhasil Tambah Menu
@@ -45,71 +45,84 @@
                     </div>
                 <?php endif ?>
                 <!-- end alert -->
-                
+
                 <div class="card shadow mt-5">
                     <div class="card-header">
-                        Data Menu
+                        <div class="row">
+                            <div class="col">
+                                <p>Data Menu</p>
+                                <?php
+                                if ($_SESSION['level'] == 3 or $_SESSION['level'] == 1) {
+                                ?>
+                                    <a href="<?php echo base_url('Menu/tambahmenu') ?>" class="btn btn-primary mb-3">Tambah Menu</a>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                            <div class="col">
+                                <form action="" method="POST">
+                                    <label>Cari nama Menu</label>
+                                    <input type="text" name="search" class="form-control">
+                                    <button type="submit" class="btn btn-primary mt-2">cari</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                     <div class="container mt-3" style="width:100vw;">
-                    <?php
-                    if ($_SESSION['level'] == 3 or $_SESSION['level'] == 1) {
-                    ?>
-                        <a href="<?php echo base_url('Menu/tambahmenu') ?>" class="btn btn-primary mb-3">Tambah Menu</a>
-                    <?php
-                    }
-                    ?>
-                    <table class="table table-bordered">
-                        <tr class="text-center">
-                            <th>Id Menu</th>
-                            <th>Nama Menu</th>
-                            <th>Harga</th>
-                            <th>Status</th>
-                            <?php
-                            if ($_SESSION['level'] == 3 or $_SESSION['level'] == 1) {
-                            ?>
-                                <th>Aksi</th>
-                            <?php
-                            }
-                            ?>
-                        </tr>
-                        <?php
-                        $count = 0;
-                        foreach ($data as $row) {
-                            $count = $count + 1;
-                        ?>
+                        <table class="table table-border">
                             <tr class="text-center">
-                                <td><?php echo $row->id_masakan ?></td>
-                                <td><?php echo $row->nama_masakan ?></td>
-                                <td><?php echo $row->harga ?></td>
-                                <td>
-                                    <?php if ($row->status_masakan == 1) { ?>
-                                        <p class="badge bg-success text-light">Active</p>
-                                    <?php } ?>
-                                    <?php if ($row->status_masakan == 0) { ?>
-                                        <p class="badge bg-danger text-light">Inactive</p>
-                                    <?php } ?>
-                                </td>
+                                <th>Id Menu</th>
+                                <th>Gambar</th>
+                                <th>Nama Menu</th>
+                                <th>Harga</th>
+                                <th>Status</th>
                                 <?php
-                                if ( $_SESSION['level'] == 3 or $_SESSION['level'] == 1) {
+                                if ($_SESSION['level'] == 3 or $_SESSION['level'] == 1) {
                                 ?>
-                                    <td>
-                                        <a href="<?php echo base_url('Menu/editmenu') ?>/<?php echo $row->id_masakan ?>" class="btn btn-warning">edit</a>
-                                        <a href="<?php echo base_url('Menu/hapus') ?>/<?php echo $row->id_masakan ?>" class="btn btn-danger">Hapus</a>
-                                    </td>
+                                    <th>Aksi</th>
                                 <?php
                                 }
                                 ?>
                             </tr>
-                        <?php
-                        }
-                        ?>
-                    </table>
+                            <?php
+                            $count = 0;
+                            foreach ($search as $row) {
+                                $count = $count + 1;
+                            ?>
+                                <tr class="text-center">
+                                    <td><?php echo $row['id_masakan'] ?></td>
+                                    <td><img src="<?php echo base_url('assets/img/') . $row['image'] ?>"></td>
+                                    <td><?php echo $row['nama_masakan'] ?></td>
+                                    <td><?php echo $row['harga'] ?></td>
+                                    <td>
+                                        <?php if ($row['status_masakan'] == 1) { ?>
+                                            <p class="badge bg-success text-light">Active</p>
+                                        <?php } ?>
+                                        <?php if ($row['status_masakan'] == 0) { ?>
+                                            <p class="badge bg-danger text-light">Inactive</p>
+                                        <?php } ?>
+                                    </td>
+                                    <?php
+                                    if ($_SESSION['level'] == 3 or $_SESSION['level'] == 1) {
+                                    ?>
+                                        <td>
+                                            <a href="<?php echo base_url('Menu/editmenu') ?>/<?php echo $row['id_masakan'] ?>" class="btn btn-warning">edit</a>
+                                            <a href="<?php echo base_url('Menu/hapus') ?>/<?php echo $row['id_masakan'] ?>" class="btn btn-danger">Hapus</a>
+                                        </td>
+                                    <?php
+                                    }
+                                    ?>
+                                </tr>
+                            <?php
+                            }
+                            ?>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <?php $this->load->view('Layout/footer')?>
+    <?php $this->load->view('Layout/footer') ?>
     <script src="<?php echo base_url() ?>assets/bootstrap/js/bootstrap.min.js"></script>
 
 </body>

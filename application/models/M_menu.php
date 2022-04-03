@@ -13,7 +13,7 @@ class M_menu extends CI_Model
     public function data()
     {
         $query = $this->db->get($this->table);
-        return  $query->result();
+        return  $query->result_array();
     }
     public function insert($masakan)
     {
@@ -34,5 +34,15 @@ class M_menu extends CI_Model
     {
         $this->db->where('id_masakan', $id_masakan);
         $this->db->delete($this->table);
+    }
+
+    public function search($search)
+    {
+        $query = "  SELECT * FROM masakan 
+       WHERE nama_masakan LIKE '$search'
+              GROUP BY id_masakan,nama_masakan
+              ORDER BY id_masakan   DESC ";
+
+       return $this->db->query($query)->result_array();
     }
 }

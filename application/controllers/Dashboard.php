@@ -17,14 +17,17 @@ class Dashboard extends CI_Controller{
     }
     public function index()
     {
-        $data['user'] = $this->db->get('user')->num_rows();
+        $data['transaksi'] = $this->db->get('transaksi')->num_rows();
         $data['menu'] = $this->db->get('masakan')->num_rows();
+        // $data['log'] = $this->db->get('log_aktivitas')->result();
+        //antrean pesanan
+        $this->db->where('status_pesanan', '0');
         $data['pesanan'] = $this->db->get('pesanan')->num_rows();
-
+        
         // dapatkan meja kosong
         $this->db->where('status_meja', 1);
         $data['meja'] = $this->db->get('meja')->num_rows();
-        
+        // var_dump($data);
         $this->load->view('dashboard',$data);
     }
     public function profil()
@@ -32,5 +35,6 @@ class Dashboard extends CI_Controller{
         $sesi = $this->session->userdata();
         var_dump($sesi);
     }
+    
     
 }

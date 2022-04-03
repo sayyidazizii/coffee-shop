@@ -35,4 +35,6 @@ class M_pesanan extends CI_Model
         $this->db->where('id_pesanan', $id_pesanan);
         $this->db->delete($this->table);
     }
+
+    
 }

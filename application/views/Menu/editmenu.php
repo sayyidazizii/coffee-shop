@@ -33,6 +33,8 @@
                             <input class="form-control" type="text" name="id_masakan"  value="<?php echo $masakan->id_masakan?>" hidden>
                             <label class="form-label">Nama Menu</label>
                             <input class="form-control" type="text" name="nama_masakan"  value="<?php echo $masakan->nama_masakan?>" required>
+                            <label class="form-label">Nama Gambar</label>
+                            <input class="form-control" type="text" name="nama_masakan"  value="<?php echo $masakan->image?>" required>
                             <label class="form-label">Harga</label>
                             <input class="form-control" type="text" name="harga" value="<?php echo $masakan->harga?>" required>
                             <label class="form-label">Status</label>

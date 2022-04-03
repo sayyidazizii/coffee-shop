@@ -31,6 +31,8 @@
                         <div class="container" style="width:50vw">
                             <label class="form-label">Nama Menu</label>
                             <input class="form-control" type="text" name="nama_masakan" required>
+                            <label class="form-label">Gambar</label>
+                            <input class="form-control" type="text" name="image" required>
                             <label class="form-label">Harga</label>
                             <input class="form-control" type="text" name="harga" required>
                             <label class="form-label">Status</label>

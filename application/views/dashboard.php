@@ -24,8 +24,17 @@
 
             <!-- Page content-->
             <div class="container-fluid">
-                <h1 class="mt-4">Dashboard</h1>
-                <p class="text-primary"><?php echo $_SESSION['username'] ?></p>
+
+             <!-- alert session -->
+             <?php $sukses = $this->session->flashdata('sukses'); ?>
+                        <?php if (isset($sukses)) : ?>
+                            <div class="alert alert-success mt-2">
+                                Selamat<strong> Login Berhasil</strong>
+                            </div>
+                        <?php endif ?>
+
+                <h1 class="mt-4">Dashboard </h1>
+               <div class="text-dark">Selamat datang <strong class="text-primary"><?php echo $_SESSION['username'];?></strong></div>
                 <hr>
                 <div class="container" style="width:100vw;">
                     <div class="row row-cols-1 row-cols-md-4 g-4">
@@ -34,7 +43,8 @@
                                 <div class="card-body">
                                     <p class="fw-bold">Menu
                                     <div class="text-center">
-                                        <?php echo $menu?>
+                                        <h3 class="text-primary"><?php echo $menu?></h3>
+                                        
                                     </div>
                                     </p>
                                     <a href="<?php echo base_url('Menu')?>" class="btn btn-primary">View</a>
@@ -44,9 +54,9 @@
                         <div class="col">
                             <div class="card shadow">
                                 <div class="card-body">
-                                    <p class="fw-bold">Pesanan
+                                    <p class="fw-bold">Pesanan Belum dibayar
                                     <div class="text-center">
-                                        <?php echo $pesanan?>
+                                    <h3 class="text-danger"><?php echo $pesanan?></h3>
                                     </div>
                                     </p>
                                     <a href="<?php echo base_url('Pesanan')?>" class="btn btn-primary">View</a>
@@ -58,7 +68,7 @@
                                 <div class="card-body">
                                     <p class="fw-bold">Meja Ready
                                     <div class="text-center">
-                                    <?php echo $meja?>
+                                    <h3 class="text-success"><?php echo $meja?></h3>
                                     </div>
                                     </p>
                                     <a href="<?php echo base_url('Meja')?>" class="btn btn-primary">View</a>
@@ -68,12 +78,12 @@
                         <div class="col">
                             <div class="card shadow">
                                 <div class="card-body">
-                                    <p class="fw-bold">User
+                                    <p class="fw-bold">Transaksi
                                     <div class="text-center">
-                                    <?php echo $user?>
+                                    <h3 class="text-warning"><?php echo $transaksi?></h3>
                                     </div>
                                     </p>
-                                    <a href="<?php echo base_url('User')?>" class="btn btn-primary">View</a>
+                                    <a href="<?php echo base_url('Transaksi')?>" class="btn btn-primary">View</a>
                                 </div>
                             </div>
                         </div>

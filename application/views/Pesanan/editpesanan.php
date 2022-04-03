@@ -39,8 +39,13 @@
                             <input class="form-control" type="text" name="id_user" value="<?php echo $_SESSION['id_user'] ?>" readonly>
                             <label class="form-label">Tanggal</label>
                             <input class="form-control" type="date" name="tanggal" required>
+                            <label class="form-label">Status</label>
+                            <select class="form-select" name="status_pesanan">
+                                <option value="1">Bayar Langsung</option>
+                                 <option value="0">Belum dibayar</option>
+                            </select>
                             <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                            <a href="<?php echo base_url('Menu') ?>" class="btn btn-secondary mt-3">Batal</a>
+                            <a href="<?php echo base_url('Pesanan') ?>" class="btn btn-secondary mt-3">Batal</a>
                         </div>
                     </form>
                 </div>

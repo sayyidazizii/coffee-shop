@@ -43,6 +43,11 @@ class User extends CI_Controller
         );
         $this->session->set_flashdata('tambah','berhasil');
         $this->M_user->insert($Arrinsert);
+
+         //contoh panggil helper log
+         helper_log("add", "menambahkan data user");
+         //silahkan di ganti2 aja kalimatnya
+         
         redirect('User');
     }
     public function edituser($id_user)
