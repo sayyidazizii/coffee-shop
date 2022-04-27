@@ -77,8 +77,7 @@
                                 ?>
                             </tr>
                             <?php
-                            $query = $this->db->query("SELECT * FROM pesanan INNER JOIN user ON pesanan.id_user = user.id_user");
-                            foreach ($query->result() as $row) {
+                            foreach ($data as $row) {
                                 if($row->status_pesanan ==  1){
                                   continue;
                                 }
@@ -88,7 +87,7 @@
                                     <td><?php echo $row->customer ?></td>
                                     <td><?php echo $row->id_meja ?></td>
                                     <td><?php echo $row->tanggal ?> </td>
-                                    <td><?php echo $row->username ?> </td>
+                                    <td><?php echo $row->nama_user ?> </td>
                                     <td>  <?php if ($row->status_pesanan == '0'){?>
                                     <p class="text-light badge bg-danger">Belum di bayar</p>
                                     <?php }?>
@@ -148,11 +147,9 @@
                         }
                         ?>
                     </select>
-                    <label class="form-label">User</label>
-                    <input class="form-control" type="text" value="<?php echo $_SESSION['nama_user'] ?>" readonly>
+                    <label class="form-label">Nama Petugas</label>
+                    <input class="form-control" type="text" name="nama_user" value="<?php echo $_SESSION['nama_user'] ?>" readonly>
                     <input class="form-control" type="text" name="id_user" value="<?php echo $_SESSION['id_user'] ?>" hidden>
-                    <label class="form-label">Tanggal</label>
-                    <input class="form-control" type="date" name="tanggal" required>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

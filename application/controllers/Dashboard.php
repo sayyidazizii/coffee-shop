@@ -19,7 +19,7 @@ class Dashboard extends CI_Controller{
     {
         $data['transaksi'] = $this->db->get('transaksi')->num_rows();
         $data['menu'] = $this->db->get('masakan')->num_rows();
-        // $data['log'] = $this->db->get('log_aktivitas')->result();
+        $data['log'] = $this->db->get('log_aktivitas',2,1)->result_array();
         //antrean pesanan
         $this->db->where('status_pesanan', '0');
         $data['pesanan'] = $this->db->get('pesanan')->num_rows();

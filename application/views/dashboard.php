@@ -25,16 +25,16 @@
             <!-- Page content-->
             <div class="container-fluid">
 
-             <!-- alert session -->
-             <?php $sukses = $this->session->flashdata('sukses'); ?>
-                        <?php if (isset($sukses)) : ?>
-                            <div class="alert alert-success mt-2">
-                                Selamat<strong> Login Berhasil</strong>
-                            </div>
-                        <?php endif ?>
+                <!-- alert session -->
+                <?php $sukses = $this->session->flashdata('sukses'); ?>
+                <?php if (isset($sukses)) : ?>
+                    <div class="alert alert-success mt-2">
+                        Selamat<strong> Login Berhasil</strong>
+                    </div>
+                <?php endif ?>
 
                 <h1 class="mt-4">Dashboard </h1>
-               <div class="text-dark">Selamat datang <strong class="text-primary"><?php echo $_SESSION['username'];?></strong></div>
+                <div class="text-dark">Selamat datang <strong class="text-primary"><?php echo $_SESSION['username']; ?></strong></div>
                 <hr>
                 <div class="container" style="width:100vw;">
                     <div class="row row-cols-1 row-cols-md-4 g-4">
@@ -43,11 +43,15 @@
                                 <div class="card-body">
                                     <p class="fw-bold">Menu
                                     <div class="text-center">
-                                        <h3 class="text-primary"><?php echo $menu?></h3>
-                                        
+                                        <h3 class="text-primary"><?php echo $menu ?></h3>
+
                                     </div>
                                     </p>
-                                    <a href="<?php echo base_url('Menu')?>" class="btn btn-primary">View</a>
+                                    <?php
+                                    if ($_SESSION['level'] == 3) {
+                                    ?>
+                                        <a href="<?php echo base_url('Menu') ?>" class="btn btn-primary">View</a>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -56,10 +60,14 @@
                                 <div class="card-body">
                                     <p class="fw-bold">Pesanan Belum dibayar
                                     <div class="text-center">
-                                    <h3 class="text-danger"><?php echo $pesanan?></h3>
+                                        <h3 class="text-danger"><?php echo $pesanan ?></h3>
                                     </div>
                                     </p>
-                                    <a href="<?php echo base_url('Pesanan')?>" class="btn btn-primary">View</a>
+                                    <?php
+                                    if ($_SESSION['level'] == 2) {
+                                    ?>
+                                        <a href="<?php echo base_url('Pesanan') ?>" class="btn btn-primary">View</a>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -68,10 +76,14 @@
                                 <div class="card-body">
                                     <p class="fw-bold">Meja Ready
                                     <div class="text-center">
-                                    <h3 class="text-success"><?php echo $meja?></h3>
+                                        <h3 class="text-success"><?php echo $meja ?></h3>
                                     </div>
                                     </p>
-                                    <a href="<?php echo base_url('Meja')?>" class="btn btn-primary">View</a>
+                                    <?php
+                                    if ($_SESSION['level'] == 3) {
+                                    ?>
+                                        <a href="<?php echo base_url('Meja') ?>" class="btn btn-primary">View</a>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -80,19 +92,54 @@
                                 <div class="card-body">
                                     <p class="fw-bold">Transaksi
                                     <div class="text-center">
-                                    <h3 class="text-warning"><?php echo $transaksi?></h3>
+                                        <h3 class="text-warning"><?php echo $transaksi ?></h3>
                                     </div>
                                     </p>
-                                    <a href="<?php echo base_url('Transaksi')?>" class="btn btn-primary">View</a>
+                                    <?php
+                                    if ($_SESSION['level'] == 3 or $_SESSION['level'] == 2) {
+                                    ?>
+                                        <a href="<?php echo base_url('Transaksi') ?>" class="btn btn-primary">View</a>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <?php
+                    if ($_SESSION['level'] == 3 or $_SESSION['level'] == 1) {
+                    ?>
+                        <div class="card shadow mt-2">
+                            <div class="card-body">
+                                <table class="table table-borderless">
+                                    <tr class="text-center">
+                                        <th>Id Aktivitas</th>
+                                        <th>Nama User</th>
+                                        <th>Tipe Log</th>
+                                        <th>Waktu</th>
+                                        <th>Aksi</th>
+                                    </tr>
+
+                                    <?php
+                                    foreach ($log as $row) {
+                                    ?>
+                                        <tr class="text-center">
+                                            <td><?php echo $row['id_log'] ?></td>
+                                            <td><?php echo $row['log_user'] ?></td>
+                                            <td><?php echo $row['log_tipe'] ?></td>
+                                            <td><?php echo $row['log_time']; ?></td>
+                                            <td><?php echo $row['log_desc']; ?></td>
+                                        </tr>
+                                    <?php
+                                    }
+                                    ?>
+                                </table>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
     </div>
-    <?php $this->load->view('Layout/footer')?>
+    <?php $this->load->view('Layout/footer') ?>
     <script src="<?php echo base_url() ?>assets/bootstrap/js/bootstrap.min.js"></script>
 
 </body>

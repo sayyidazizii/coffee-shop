@@ -50,7 +50,7 @@
 
                         <tr>
                             <td><?php echo $row->id ?></td>
-                            <td><?php echo $row->id_user ?></td>
+                            <td><?php echo $row->nama_user ?></td>
                             <td><?php echo $row->id_pesanan_index2 ?></td>
                             <td><?php echo $row->tanggal_transaksi ?></td>
                             <td><?php echo $row->uang ?></td>

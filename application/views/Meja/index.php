@@ -65,7 +65,7 @@
                                 <th>Kapasitas</th>
                                 <th>Status</th>
                                 <?php
-                                if ($_SESSION['level'] == 2 or $_SESSION['level'] == 1) {
+                                if ($_SESSION['level'] == 2 or $_SESSION['level'] == 3) {
                                 ?>
                                     <th>Aksi</th>
                                 <?php
@@ -90,7 +90,7 @@
                                         <?php } ?>
                                     </td>
                                     <?php
-                                    if ($_SESSION['level'] == 2 or $_SESSION['level'] == 1) {
+                                    if ($_SESSION['level'] == 2 or $_SESSION['level'] == 3) {
                                     ?>
                                         <td>
                                             <a href="<?php echo base_url('Meja/editmeja') ?>/<?php echo $row->id_meja ?>" class="btn btn-warning">edit</a>

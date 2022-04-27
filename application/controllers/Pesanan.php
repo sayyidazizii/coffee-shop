@@ -20,6 +20,10 @@ class Pesanan extends CI_Controller
     }
     public function index()
     {
+         //pengecekan sesi
+         if ($this->session->userdata('level') != 2) {
+            redirect('Dashboard');
+        }
         $data['data'] = $this->M_pesanan->data();
         $data['meja'] = $this->M_meja->meja();
         $data['user'] = $this->M_user->data();
@@ -30,14 +34,14 @@ class Pesanan extends CI_Controller
     {
         $customer = $this->input->post('customer');
         $id_meja = $this->input->post('id_meja');
-        $tanggal = $this->input->post('tanggal');
         $id_user = $this->input->post('id_user');
+        $nama_user = $this->input->post('nama_user');
 
         $Arrinsert = array(
             'customer' => $customer,
             'id_meja' => $id_meja,
-            'tanggal' => $tanggal,
-            'id_user' => $id_user
+            'id_user' => $id_user,
+            'nama_user' => $nama_user
         );
         $this->session->set_flashdata('tambah', 'berhasil');
         $this->M_pesanan->insert($Arrinsert);
@@ -48,9 +52,9 @@ class Pesanan extends CI_Controller
     }
     public function editpesanan($id_pesanan)
     {
-        //pengecekan sesi
-        if ($this->session->userdata('level') == 3) {
-            redirect('Pesanan');
+         //pengecekan sesi
+         if ($this->session->userdata('level') != 2) {
+            redirect('Dashboard');
         }
         $query = $this->M_pesanan->getbyid($id_pesanan);
         $data  = array('pesanan' => $query);
@@ -62,7 +66,7 @@ class Pesanan extends CI_Controller
         $id_pesanan  = $this->input->post('id_pesanan');
         $customer = $this->input->post('customer');
         $id_meja = $this->input->post('id_meja');
-        $tanggal = $this->input->post('tanggal');
+        $nama_user = $this->input->post('nama_user');
         $id_user = $this->input->post('id_user');
         $status_pesanan = $this->input->post('status_pesanan');
 
@@ -70,7 +74,7 @@ class Pesanan extends CI_Controller
             'id_pesanan' => $id_pesanan,
             'customer' => $customer,
             'id_meja' => $id_meja,
-            'tanggal' => $tanggal,
+            'nama_user' => $nama_user,
             'id_user' => $id_user,
             'status_pesanan' => $status_pesanan
         );
@@ -83,6 +87,10 @@ class Pesanan extends CI_Controller
     }
     public function hapus($id)
     {
+         //pengecekan sesi
+         if ($this->session->userdata('level') != 2) {
+            redirect('Dashboard');
+        }
         //pengecekan sesi
         if ($this->session->userdata('level') == 3) {
             redirect('Pesanan');
@@ -98,9 +106,9 @@ class Pesanan extends CI_Controller
     //detail pesanan
     public function detailpesanan($id_pesan)
     {
-        //pengecekan sesi
-        if ($this->session->userdata('level') == 3) {
-            redirect('Pesanan');
+         //pengecekan sesi
+         if ($this->session->userdata('level') != 2) {
+            redirect('Dashboard');
         }
         //data pesanan berdasar id
         $pesanan = $this->M_pesanan->getbyid($id_pesan);
@@ -138,6 +146,10 @@ class Pesanan extends CI_Controller
     //detail transaksi
     public function detailtransaksi($id_pesan)
     {
+         //pengecekan sesi
+         if ($this->session->userdata('level') != 2) {
+            redirect('Dashboard');
+        }
         //pengecekan sesi
         if ($this->session->userdata('level') == 3) {
             redirect('Pesanan');
@@ -166,7 +178,6 @@ class Pesanan extends CI_Controller
         $nama_masakan = $this->input->post('nama_masakan');
         $jumlah_pesanan = $this->input->post('jumlah_pesanan');
         $jumlah_harga = $this->input->post('jumlah_harga');
-        $keterangan = $this->input->post('keterangan');
 
 
         $Arrinsert = array(
@@ -175,7 +186,6 @@ class Pesanan extends CI_Controller
             'nama_masakan' => $nama_masakan,
             'jumlah_pesanan' => $jumlah_pesanan,
             'jumlah_harga' => $jumlah_harga * $jumlah_pesanan,
-            'keterangan' => $keterangan,
 
         );
         $this->M_detail->insert($Arrinsert);
@@ -187,6 +197,7 @@ class Pesanan extends CI_Controller
     {
 
         $id_user = $this->input->post('id_user');
+        $nama_user = $this->input->post('nama_user');
         $id_pesanan_index = $this->input->post('id_pesanan_index2');
         $tanggal_transaksi = $this->input->post('tanggal_transaksi');
         $uang = $this->input->post('uang');
@@ -195,6 +206,7 @@ class Pesanan extends CI_Controller
 
         $Arrinsert = array(
             'id_user' => $id_user,
+            'nama_user' => $nama_user,
             'id_pesanan_index2' => $id_pesanan_index,
             'tanggal_transaksi' => $tanggal_transaksi,
             'uang' => $uang,
@@ -243,18 +255,22 @@ class Pesanan extends CI_Controller
      //cetak Struk atau invoice transaksi
      public function invoice($id_pesan)
      {
-         //pengecekan sesi
-         if ($this->session->userdata('level') == 3) {
-             redirect('Pesanan');
-         }
+          //pengecekan sesi
+          if ($this->session->userdata('level') != 2) {
+            redirect('Dashboard');
+        }
          // //data pesanan berdasar row
          // $pesanan = $this->M_pesanan->getbyid($id_pesan);
  
-         $transaksi = $this->M_detail->getbyid($id_pesan);
+         $struk = $this->M_detail->getbyid($id_pesan);
+         $transaksi = $this->M_transaksi->getindex($id_pesan);
+         $pesanan = $this->M_pesanan->getbyid($id_pesan);
  
          $data  = array(
              'id' => $id_pesan,
-             'transaksi' => $transaksi,
+             'struk' => $struk,
+             'pesanan'=>$pesanan,
+             'transaksi' =>$transaksi
      
          );
           //var_dump($data);
@@ -267,8 +283,8 @@ class Pesanan extends CI_Controller
     public function hapusorder($id_pesan)
     {
         //pengecekan sesi
-        if ($this->session->userdata('level') == 3) {
-            redirect('Pesanan');
+        if ($this->session->userdata('level') != 2) {
+            redirect('Dashboard');
         }
 
         $this->M_detail->hapus($id_pesan);

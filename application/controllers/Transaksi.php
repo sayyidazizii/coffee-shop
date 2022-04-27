@@ -16,6 +16,10 @@ class Transaksi extends CI_Controller{
     }
     public function index()
     {
+        //pengecekan sesi
+        if ($this->session->userdata('level') == 1) {
+            redirect('Dashboard');
+        }
         $query = $this->M_transaksi->data();
         $data  = array('data' => $query);
         // var_dump($data);
@@ -23,6 +27,10 @@ class Transaksi extends CI_Controller{
     }
     public function detailtransaksi($index_pesanan)
     {
+        //pengecekan sesi
+        if ($this->session->userdata('level') == 1) {
+            redirect('Dashboard');
+        }
         $query= $this->M_transaksi->getbyid($index_pesanan);
         $data  = array('transaksi' => $query);
         //  var_dump($data);

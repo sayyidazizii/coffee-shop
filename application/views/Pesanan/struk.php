@@ -10,45 +10,63 @@
 </head>
 
 <body>
-    <center>
-    <table class="table table-border">
-        <tr>
-            <th hidden>id Detail</th>
-            <th>Id pesanan</th>
-            <th hidden>Id Menu</th>
-            <th>Nama Menu</th>
-            <th>jumlah</th>
-            <th>jumlah Harga</th>
-            <th>Keterangan</th>
-        </tr>
-        <?php
-        $jumlah = 0;
-        $indexpesanan = 0;
-        foreach ($transaksi as $row) {
-            $jumlah += $row->jumlah_harga;
-            $indexpesanan = $row->id_pesanan_index;
-        ?>
+
+    <div class="card mt-5 border-dark" style="position:relative;width:50%;margin-left:25%;">
+        <table class="table table-borderless">
+            <p class="fw-bold text-center">Terimakasih Telah Mampir Di Cafe Kami</p>
             <tr>
-                <td hidden><?= $row->id_pesan ?></td>
-                <td><?= $row->id_pesanan_index ?></td>
-                <td hidden><?= $row->id_masakan ?></td>
-                <td><?= $row->nama_masakan ?></td>
-                <td><?= $row->jumlah_pesanan ?></td>
-                <td><?php echo $row->jumlah_harga ?></td>
-                <td><?= $row->keterangan ?></td>
+                <th>Customer</th>
+                <td><?php echo $pesanan->customer ?></td>
             </tr>
-        <?php
-        }
-        ?>
-        <tr>
-            <td><strong>Total</strong></td>
-            <td><strong>Bayar</strong></td>
-            <td><strong>:</strong></td>
-            <td><strong><?php echo $jumlah ?></strong></td>
-            <td></td>
-        </tr>
-    </table>
-    </center>
+            <tr>
+                <th>Petugas</th>
+                <td><?php echo $pesanan->nama_user ?></td>
+            </tr>
+            <tr>
+                <th>Tanggal</th>
+                <td><?php echo $pesanan->tanggal ?></td>
+            </tr>
+
+            <tr>
+                <th>Nama Menu</th>
+                <th>jumlah</th>
+                <th>jumlah Harga</th>
+            </tr>
+            <?php
+            $jumlah = 0;
+            $indexpesanan = 0;
+            foreach ($struk as $row) {
+                $jumlah += $row->jumlah_harga;
+                $indexpesanan = $row->id_pesanan_index;
+            ?>
+                <tr>
+                    <td><?= $row->nama_masakan ?></td>
+                    <td class=" text-center"><?= $row->jumlah_pesanan ?></td>
+                    <td><?php echo $row->jumlah_harga ?></td>
+                </tr>
+            <?php
+            }
+            ?>
+            <tr>
+                <td><strong>Total Bayar</strong></td>
+                <td class=" text-center"><strong> : </strong></td>
+                <td><strong><?php echo $jumlah ?></strong></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>Uang</strong></td>
+                <td class=" text-center"><strong> : </strong></td>
+                <td><strong><?php echo $transaksi->uang ?></strong></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>Kembalian</strong></td>
+                <td class=" text-center"><strong> : </strong></td>
+                <td><strong><?php echo $transaksi->kembalian  ?></strong></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
 
 </body>
 <script>

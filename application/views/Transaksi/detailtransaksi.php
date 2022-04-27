@@ -39,7 +39,6 @@
                                                         <th>Nama Menu</th>
                                                         <th>jumlah</th>
                                                         <th>jumlah Harga</th>
-                                                        <th>Keterangan</th>
                                                     </tr>
                                                     <?php
                                                     $jumlah = 0;
@@ -55,7 +54,6 @@
                                                             <td><?= $row->nama_masakan ?></td>
                                                             <td><?= $row->jumlah_pesanan ?></td>
                                                             <td><?php echo $row->jumlah_harga ?></td>
-                                                            <td><?= $row->keterangan ?></td>
                                                         </tr>
                                                     <?php
                                                     }

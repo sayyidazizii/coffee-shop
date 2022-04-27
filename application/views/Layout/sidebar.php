@@ -3,16 +3,29 @@
     <div class="list-group list-group-flush ">
       <a class="list-group-item list-group-item-action list-group-item-light p-5 text-center bg-primary text-light fw-bolder" href="<?php echo base_url('Dashboard') ?>">Kasir Cafe</a>
       <a class="list-group-item list-group-item-action list-group-item-light p-3" href="<?php echo base_url('Dashboard') ?>">Dashboard</a>
+        <!-- hak akses admin dan manager -->
+        <?php
+      if ($_SESSION['level'] == '3') {
+      ?>
       <a class="list-group-item list-group-item-action list-group-item-light p-3" href="<?php echo base_url('Menu') ?>">Menu</a>
       <a class="list-group-item list-group-item-action list-group-item-light p-3" href="<?php echo base_url('Meja') ?>">Meja</a>
+      <?php } ?>
+      <!-- hak akses kasir -->
+      <?php
+      if ($_SESSION['level'] == '2') {
+      ?>
       <a class="list-group-item list-group-item-action list-group-item-light p-3" href="<?php echo base_url('Pesanan')?>">Pesanan</a>
-      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="<?php echo base_url('Transaksi')?>">Transaksi</a>
-
+      <?php } ?>
       <!-- hak akses admin dan manager -->
       <?php
-      if ($_SESSION['level'] == '1' or $_SESSION['level'] == '3') {
+      if ($_SESSION['level'] == '3' or $_SESSION['level'] == '2') {
       ?>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="<?php echo base_url('Laporan')?>">Laporan</a>
+      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="<?php echo base_url('Transaksi')?>">Transaksi</a>
+      <?php } ?>
+      <?php
+      if ($_SESSION['level'] == '3') {
+      ?>
+      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="<?php echo base_url('Laporan')?>">Laporan</a>
       <?php
       }
       ?>

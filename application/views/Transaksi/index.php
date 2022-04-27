@@ -61,7 +61,9 @@
                                     <td>
                                         <a href="<?php echo base_url('Pesanan/detailtransaksi') ?>/<?php echo $row->id_pesanan_index2 ?>" class="btn btn-warning">Detail</a>
                                         <a href="<?php echo base_url('Pesanan/invoice') ?>/<?php echo $row->id_pesanan_index2 ?>" target="_blank" class="btn btn-primary">struk</a>
+                                        <?php if($_SESSION['level'] == 3){?>
                                         <a href="<?php echo base_url('Transaksi/hapus') ?>/<?php echo $row->id_pesanan_index2 ?>" class="btn btn-danger">Hapus</a>
+                                        <?php } ?>
                                     </td>
                                     </td><?php } ?>
 

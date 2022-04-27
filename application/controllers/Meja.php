@@ -15,6 +15,10 @@ class Meja extends CI_Controller
     }
     public function index()
     {
+        //pengecekan sesi
+        if ($this->session->userdata('level') != 3) {
+            redirect('Dashboard');
+        }
         $query = $this->M_meja->data();
         $data  = array('data' => $query);
         $this->load->view('Meja/index', $data);
@@ -22,9 +26,9 @@ class Meja extends CI_Controller
     }
     public function tambahmeja()
     {
-         //pengecekan sesi
-         if (!$this->session->userdata('level') == 1 or !$this->session->userdata('level') == 2) {
-            redirect('Meja');
+        //pengecekan sesi
+        if ($this->session->userdata('level') != 3) {
+            redirect('Dashboard');
         }
         $this->load->view('Meja/tambahmeja');
     }
@@ -45,9 +49,9 @@ class Meja extends CI_Controller
     }
     public function editmeja($id_meja)
     {
-         //pengecekan sesi
-         if (!$this->session->userdata('level') == 1 or !$this->session->userdata('level') == 2) {
-            redirect('Meja');
+        //pengecekan sesi
+        if ($this->session->userdata('level') != 3) {
+            redirect('Dashboard');
         }
         $query = $this->M_meja->getbyid($id_meja);
         $data  = array('meja' => $query);
@@ -74,9 +78,9 @@ class Meja extends CI_Controller
     }
     public function hapus($id)
     {
-         //pengecekan sesi
-         if (!$this->session->userdata('level') == 1 or !$this->session->userdata('level') == 2) {
-            redirect('Meja');
+        //pengecekan sesi
+        if ($this->session->userdata('level') != 3) {
+            redirect('Dashboard');
         }
         $this->M_meja->hapus($id);
         $this->session->set_flashdata('hapus','berhasil');

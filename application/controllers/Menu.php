@@ -15,6 +15,10 @@ class Menu extends CI_Controller
     }
     public function index()
     {
+        //pengecekan sesi
+        if ($this->session->userdata('level') != 3) {
+            redirect('Dashboard');
+        }
         // $data = $this->M_menu->data();
         $query = $this->input->post('search');
         // var_dump($query);
@@ -31,8 +35,8 @@ class Menu extends CI_Controller
     public function tambahmenu()
     {
          //pengecekan sesi
-         if ($this->session->userdata('level') == 2) {
-            redirect('Menu');
+        if ($this->session->userdata('level') != 3) {
+            redirect('Dashboard');
         }
         $this->load->view('Menu/tambahmenu');
     }
@@ -57,10 +61,10 @@ class Menu extends CI_Controller
     }
     public function editmenu($id_masakan)
     {
-         //pengecekan sesi
-         if ($this->session->userdata('level') == 2) {
-            redirect('Menu');
-        }
+       //pengecekan sesi
+       if ($this->session->userdata('level') != 3) {
+        redirect('Dashboard');
+    }
         $query = $this->M_menu->getbyid($id_masakan);
         $data  = array('masakan' => $query);
         $this->load->view('Menu/editmenu', $data);
@@ -90,9 +94,9 @@ class Menu extends CI_Controller
     }
     public function hapus($id)
     {
-         //pengecekan sesi
-         if ($this->session->userdata('level') == 2) {
-            redirect('Menu');
+        //pengecekan sesi
+        if ($this->session->userdata('level') != 3) {
+            redirect('Dashboard');
         }
         $this->M_menu->hapus($id);
          //contoh panggil helper log

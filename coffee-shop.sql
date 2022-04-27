@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2022 at 02:44 AM
+-- Generation Time: Apr 27, 2022 at 06:21 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -34,34 +34,23 @@ CREATE TABLE `detail_pesan` (
   `id_masakan` int(11) NOT NULL,
   `nama_masakan` varchar(255) NOT NULL,
   `jumlah_pesanan` varchar(255) NOT NULL,
-  `jumlah_harga` varchar(255) NOT NULL,
-  `keterangan` text NOT NULL
+  `jumlah_harga` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_pesan`
 --
 
-INSERT INTO `detail_pesan` (`id_pesan`, `id_pesanan_index`, `id_masakan`, `nama_masakan`, `jumlah_pesanan`, `jumlah_harga`, `keterangan`) VALUES
-(1, 2, 1, 'White Coffee', '1', '4000', ''),
-(2, 2, 5, 'Spageti', '1', '10000', ''),
-(3, 5, 8, 'Burger', '1', '10000', ''),
-(4, 5, 7, 'Es Susu', '1', '4000', ''),
-(5, 5, 4, 'Chiken Steak', '1', '10000', ''),
-(6, 5, 2, 'Kopi hitam', '1', '3000', ''),
-(7, 4, 4, 'Chiken Steak', '1', '10000', ''),
-(9, 6, 8, 'Burger', '1', '10000', ''),
-(10, 6, 6, 'Es teh', '1', '3000', ''),
-(11, 1, 1, 'White Coffee', '1', '4000', ''),
-(12, 1, 8, 'Burger', '1', '10000', ''),
-(13, 1, 4, 'Chiken Steak', '1', '10000', ''),
-(14, 1, 6, 'Es teh', '1', '3000', ''),
-(15, 3, 6, 'Es teh', '1', '3000', ''),
-(16, 3, 4, 'Chiken Steak', '1', '10000', ''),
-(17, 3, 8, 'Burger', '1', '10000', ''),
-(18, 4, 6, 'Es teh', '1', '3000', ''),
-(19, 4, 8, 'Burger', '1', '10000', ''),
-(20, 4, 4, 'Chiken Steak', '1', '10000', '');
+INSERT INTO `detail_pesan` (`id_pesan`, `id_pesanan_index`, `id_masakan`, `nama_masakan`, `jumlah_pesanan`, `jumlah_harga`) VALUES
+(1, 1, 1, 'White Coffee', '1', '4000'),
+(2, 1, 2, 'Kopi hitam', '1', '3000'),
+(3, 1, 4, 'Chiken Steak', '1', '10000'),
+(4, 3, 1, 'White Coffee', '1', '4000'),
+(5, 3, 5, 'Spageti', '1', '10000'),
+(6, 3, 8, 'Burger', '1', '10000'),
+(7, 3, 7, 'Es Susu', '1', '4000'),
+(8, 4, 4, 'Chiken Steak', '1', '10000'),
+(9, 4, 6, 'Es teh', '1', '3000');
 
 -- --------------------------------------------------------
 
@@ -102,27 +91,35 @@ CREATE TABLE `log_aktivitas` (
 --
 
 INSERT INTO `log_aktivitas` (`id_log`, `log_user`, `log_tipe`, `log_time`, `log_desc`) VALUES
-(1, 'Admin', 1, '2022-03-31 07:04:32', 'logout'),
-(2, 'manager', 0, '2022-03-31 07:04:40', 'telah login'),
-(3, 'manager', 1, '2022-03-31 07:05:48', 'logout'),
-(4, 'kasir', 0, '2022-03-31 07:05:54', 'telah login'),
-(5, 'kasir', 2, '2022-03-31 07:06:14', 'menambahkan pesanan baru'),
-(6, 'kasir', 2, '2022-03-31 07:07:30', 'menyimpan transaksi'),
-(7, 'kasir', 1, '2022-03-31 07:08:09', 'logout'),
-(8, 'manager', 0, '2022-03-31 07:08:17', 'telah login'),
-(9, 'manager', 1, '2022-03-31 07:10:07', 'logout'),
-(10, 'Admin', 0, '2022-04-02 00:11:19', 'telah login'),
-(11, 'Admin', 2, '2022-04-02 00:12:08', 'menyimpan transaksi'),
-(12, 'Admin', 2, '2022-04-02 00:12:38', 'menyimpan transaksi'),
-(13, 'Admin', 0, '2022-04-03 00:04:48', 'telah login'),
-(14, 'Admin', 1, '2022-04-03 00:07:56', 'logout'),
-(15, 'kasir', 0, '2022-04-03 00:08:06', 'telah login'),
-(16, 'kasir', 2, '2022-04-03 00:10:02', 'menambahkan pesanan baru'),
-(17, 'kasir', 2, '2022-04-03 00:10:20', 'menambahkan pesanan baru'),
-(18, 'kasir', 2, '2022-04-03 00:11:40', 'menyimpan transaksi'),
-(19, 'kasir', 1, '2022-04-03 00:17:02', 'logout'),
-(20, 'manager', 0, '2022-04-03 00:17:12', 'telah login'),
-(21, 'manager', 1, '2022-04-03 00:37:02', 'logout');
+(1, 'Admin', 2, '2022-04-23 14:25:54', 'menyimpan transaksi'),
+(2, 'Admin', 1, '2022-04-23 14:39:38', 'logout'),
+(3, 'kasir', 0, '2022-04-23 14:39:46', 'telah login'),
+(4, 'kasir', 2, '2022-04-23 14:40:02', 'menambahkan pesanan baru'),
+(5, 'kasir', 2, '2022-04-23 14:40:26', 'menyimpan transaksi'),
+(6, 'kasir', 1, '2022-04-23 14:40:35', 'logout'),
+(7, 'manager', 0, '2022-04-23 14:40:43', 'telah login'),
+(8, 'manager', 1, '2022-04-23 15:11:30', 'logout'),
+(9, 'Admin', 0, '2022-04-26 15:13:22', 'telah login'),
+(10, 'Admin', 1, '2022-04-26 15:43:21', 'logout'),
+(11, 'kasir', 0, '2022-04-26 15:43:37', 'telah login'),
+(12, 'kasir', 2, '2022-04-26 15:44:02', 'menambahkan pesanan baru'),
+(13, 'kasir', 0, '2022-04-27 03:30:57', 'telah login'),
+(14, 'kasir', 2, '2022-04-27 03:46:28', 'menyimpan transaksi'),
+(15, 'kasir', 1, '2022-04-27 04:13:32', 'logout'),
+(16, 'manager', 0, '2022-04-27 04:13:39', 'telah login'),
+(17, 'manager', 2, '2022-04-27 04:13:57', 'mencetak laporan berdasar nama petugas'),
+(18, 'manager', 2, '2022-04-27 04:14:48', 'mencetak laporan berdasar nama petugas'),
+(19, 'manager', 2, '2022-04-27 04:15:12', 'mencetak laporan berdasar nama petugas'),
+(20, 'manager', 2, '2022-04-27 04:15:27', 'mencetak laporan berdasar nama petugas'),
+(21, 'manager', 2, '2022-04-27 04:15:35', 'mencetak laporan berdasar nama petugas'),
+(22, 'manager', 2, '2022-04-27 04:15:53', 'mencetak laporan berdasar nama petugas'),
+(23, 'manager', 2, '2022-04-27 04:17:34', 'mencetak laporan berdasar tanggal'),
+(24, 'manager', 2, '2022-04-27 04:17:44', 'mencetak laporan berdasar nama petugas'),
+(25, 'manager', 1, '2022-04-27 04:18:58', 'logout'),
+(26, 'kasir', 0, '2022-04-27 04:19:08', 'telah login'),
+(27, 'kasir', 1, '2022-04-27 04:19:37', 'logout'),
+(28, 'Admin', 0, '2022-04-27 04:19:42', 'telah login'),
+(29, 'Admin', 1, '2022-04-27 04:20:15', 'logout');
 
 -- --------------------------------------------------------
 
@@ -173,7 +170,7 @@ INSERT INTO `meja` (`id_meja`, `no_meja`, `kapasitas`, `status_meja`) VALUES
 (2, '2', '6', 1),
 (3, '3', '6', 1),
 (4, '4', '6', 1),
-(5, '5', '6', 0);
+(5, '5', '6', 1);
 
 -- --------------------------------------------------------
 
@@ -185,8 +182,9 @@ CREATE TABLE `pesanan` (
   `id_pesanan` int(11) NOT NULL,
   `customer` varchar(255) NOT NULL,
   `id_meja` varchar(255) NOT NULL,
-  `tanggal` date NOT NULL,
+  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `id_user` int(11) NOT NULL,
+  `nama_user` varchar(255) NOT NULL,
   `status_pesanan` enum('1','0') NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -194,15 +192,11 @@ CREATE TABLE `pesanan` (
 -- Dumping data for table `pesanan`
 --
 
-INSERT INTO `pesanan` (`id_pesanan`, `customer`, `id_meja`, `tanggal`, `id_user`, `status_pesanan`) VALUES
-(1, 'Said murtadha', '1', '2022-03-30', 1, '1'),
-(2, 'Nuril', '2', '2022-03-30', 2, '1'),
-(3, 'Antik', '1', '2022-03-30', 1, '1'),
-(4, 'Sayyid Syafiq A.A', '3', '2022-03-30', 2, '1'),
-(5, 'Luthfi', '1', '2022-03-30', 2, '1'),
-(6, 'Iqbal', '2', '2022-03-31', 2, '1'),
-(7, 'Alif', '2', '2022-04-03', 2, '0'),
-(8, 'Riski', '3', '2022-04-03', 2, '0');
+INSERT INTO `pesanan` (`id_pesanan`, `customer`, `id_meja`, `tanggal`, `id_user`, `nama_user`, `status_pesanan`) VALUES
+(1, 'Antik', '3', '2022-04-23 14:17:33', 1, 'admin', '1'),
+(2, 'Ilham', '3', '2022-04-23 14:19:12', 1, 'Admin', '0'),
+(3, 'Ahmad', '3', '2022-04-23 14:40:02', 2, 'kasir', '1'),
+(4, 'aaaaaaa', '4', '2022-04-26 15:44:02', 2, 'kasir', '1');
 
 -- --------------------------------------------------------
 
@@ -213,6 +207,7 @@ INSERT INTO `pesanan` (`id_pesanan`, `customer`, `id_meja`, `tanggal`, `id_user`
 CREATE TABLE `transaksi` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
+  `nama_user` varchar(255) NOT NULL,
   `id_pesanan_index2` int(11) NOT NULL,
   `tanggal_transaksi` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `uang` varchar(50) NOT NULL,
@@ -224,13 +219,10 @@ CREATE TABLE `transaksi` (
 -- Dumping data for table `transaksi`
 --
 
-INSERT INTO `transaksi` (`id`, `id_user`, `id_pesanan_index2`, `tanggal_transaksi`, `uang`, `total_bayar`, `kembalian`) VALUES
-(1, 2, 2, '2022-03-29 17:00:00', '50000', '14000', '36000'),
-(2, 2, 5, '2022-03-29 17:00:00', '100000', '27000', '73000'),
-(3, 2, 6, '2022-03-30 17:00:00', '50000', '13000', '37000'),
-(4, 1, 1, '2022-03-29 17:00:00', '50000', '27000', '23000'),
-(5, 1, 3, '2022-03-29 17:00:00', '50000', '23000', '27000'),
-(6, 2, 4, '2022-03-29 17:00:00', '40000', '33000', '7000');
+INSERT INTO `transaksi` (`id`, `id_user`, `nama_user`, `id_pesanan_index2`, `tanggal_transaksi`, `uang`, `total_bayar`, `kembalian`) VALUES
+(1, 1, 'admin', 1, '2022-04-23 14:17:33', '50000', '17000', '33000'),
+(2, 2, 'kasir', 3, '2022-04-23 14:40:02', '50000', '28000', '22000'),
+(3, 2, 'kasir', 4, '2022-04-26 15:44:02', '50000', '13000', '37000');
 
 -- --------------------------------------------------------
 
@@ -317,7 +309,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `detail_pesan`
 --
 ALTER TABLE `detail_pesan`
-  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `level`
@@ -329,7 +321,7 @@ ALTER TABLE `level`
 -- AUTO_INCREMENT for table `log_aktivitas`
 --
 ALTER TABLE `log_aktivitas`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `masakan`
@@ -347,13 +339,13 @@ ALTER TABLE `meja`
 -- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`

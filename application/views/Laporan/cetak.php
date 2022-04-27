@@ -10,7 +10,8 @@
 </head>
 
 <body>
-    <table class="table table-border">
+    <table class="table table-border ">
+        <p class="text-center fw-bold mt-5">Laporan Transaksi Cafe</p>
         <tr>
             <th>Id Transaksi</th>
             <th>Nama Petugas</th>
