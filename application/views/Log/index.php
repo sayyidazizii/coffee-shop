@@ -59,11 +59,6 @@
                                 <th>Tipe Log</th>
                                 <th>Waktu</th>
                                 <th>Aktivitas</th>
-                                <?php
-                                if ($_SESSION['level'] == 1) {
-                                ?>
-                                    <th>Opsi</th>
-                                <?php } ?>
                             </tr>
                             <?php
 
@@ -78,16 +73,6 @@
                                     <td><?php echo $row['log_tipe'] ?></td>
                                     <td><?php echo $row['log_time']; ?></td>
                                     <td><?php echo $row['log_desc']; ?></td>
-                                    <?php
-                                    if ($_SESSION['level'] == 1) {
-                                    ?>
-                                        <td>
-                                            <a href="<?php echo base_url('Log/editlog') ?>/<?php echo $row['id_log'] ?>" class="btn btn-warning">edit</a>
-                                            <a href="<?php echo base_url('Log/hapus') ?>/<?php echo $row['id_log'] ?>" class="btn btn-danger">Hapus</a>
-                                        </td>
-                                    <?php
-                                    }
-                                    ?>
                                 </tr>
                             <?php
                             }

@@ -28,4 +28,13 @@ class M_log extends CI_Model
         $ex         = $this->db->query($sql);
         return $this->db->affected_rows($sql);
     }
+
+    public function homelog()
+    {
+        $this->db->select('*');
+        $this->db->from('log_aktivitas');
+        $this->db->order_by('id_log','desc');
+        $query = $this->db->get();
+        return $query->row_array();
+    }
 }

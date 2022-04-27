@@ -108,6 +108,14 @@
                     if ($_SESSION['level'] == 3 or $_SESSION['level'] == 1) {
                     ?>
                         <div class="card shadow mt-2">
+                            <div class="row mt-2" style="position: relative;margin-left:20%">
+                                <div class="col">
+                                    <p class="fw-bold">Log Aktivitas terbaru</p>
+                                </div>
+                                <div class="col">
+                                    <a href="<?php echo base_url('Log') ?>" class="btn btn-primary">Lihat semua log aktivitas</a>
+                                </div>
+                            </div>
                             <div class="card-body">
                                 <table class="table table-borderless">
                                     <tr class="text-center">
@@ -119,18 +127,14 @@
                                     </tr>
 
                                     <?php
-                                    foreach ($log as $row) {
                                     ?>
-                                        <tr class="text-center">
-                                            <td><?php echo $row['id_log'] ?></td>
-                                            <td><?php echo $row['log_user'] ?></td>
-                                            <td><?php echo $row['log_tipe'] ?></td>
-                                            <td><?php echo $row['log_time']; ?></td>
-                                            <td><?php echo $row['log_desc']; ?></td>
-                                        </tr>
-                                    <?php
-                                    }
-                                    ?>
+                                    <tr class="text-center">
+                                        <td><?php echo $log['id_log'] ?></td>
+                                        <td><?php echo $log['log_user'] ?></td>
+                                        <td><?php echo $log['log_tipe'] ?></td>
+                                        <td><?php echo $log['log_time']; ?></td>
+                                        <td><?php echo $log['log_desc']; ?></td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>

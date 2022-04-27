@@ -39,7 +39,7 @@
                             dengan level 
                             <?php if($_SESSION['level'] == '1') { ?>
                                 <div class="badge bg-primary">Admin</div>
-                                <div class="text-bold">Anda memiliki Hak Akses Ke semua data</div>
+                                <div class="text-bold">Anda memiliki Hak Akses User dan Log Aktivitas</div>
                             <?php }  ?>
                             <?php if($_SESSION['level'] == '2') { ?>
                                 <div class="badge bg-warning">Kasir</div>
