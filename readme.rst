@@ -13,6 +13,7 @@ for a given task.
 *******************
 Release Information
 *******************
+DEMO : http://kasir-cafe.epizy.com/
 
 SOURCE CODE INI TIDAK DI PERJUAL BELIKAN!!!
 DILARANG MENJUAL SC INI!!!
